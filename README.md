@@ -16,7 +16,6 @@ Future<Breakfast> futureBreakfast = mainTask.addStep(new AssembleBreakfast()); /
 Breakfast b = futureBreakfast.get();
 
 
-
 Efficient waiting:
 
 Task WaitThenPrint = new Task<String>(){
