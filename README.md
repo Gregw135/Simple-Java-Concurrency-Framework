@@ -9,7 +9,7 @@ Task composition:
 
 Task<Breakfast> makeBreakfast = new BreakfastTask();  
 mainTask.addStep(new GetBread());  
-mainTask.addStep(new PutBreakInToaster());  
+mainTask.addStep(new PutBreadInToaster());  
 mainTask.addStep(new StartToaster());  
 mainTask.addSteps(new GetOJ(), new CookEggs(), new CookBacon()); //These steps will run concurrently once the toast is                                                                          //started.    
 Future<Breakfast> futureBreakfast = mainTask.addStep(new AssembleBreakfast()); //Starts once the previous steps have  makeBreakfast.start();                                                        //all finished.  
