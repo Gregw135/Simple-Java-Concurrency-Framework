@@ -5,10 +5,9 @@ A human-friendly framework for concurrent programming. Allows concurrent program
 
 Examples:
 
-Task composition:
+Composing tasks:
 
-Task<Breakfast> makeBreakfast = new BreakfastTask();  
-mainTask.addStep(new GetBread());  
+Task makeBreakfast = new BreakfastTask();  
 mainTask.addStep(new PutBreadInToaster());  
 mainTask.addStep(new StartToaster());  
 mainTask.addSteps(new GetOJ(), new CookEggs(), new CookBacon()); //These steps will run concurrently once the toast is                                                                          //started.    
@@ -17,7 +16,7 @@ Breakfast b = futureBreakfast.get();
 
 
 
-Efficient waiting:
+Wait without threads:
 
 Task WaitThenPrint = new Task<String>(){  
   
@@ -33,6 +32,8 @@ Task WaitThenPrint = new Task<String>(){
     }  
   }  
 };  
+
+
 
   
 See Example.java for a more thorough demonstration of the framework.  
