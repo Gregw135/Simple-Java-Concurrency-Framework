@@ -17,7 +17,7 @@ Breakfast b = futureBreakfast.get();
 
 **Wait without threads:**
 
-Task WaitThenPrint = new Task<String>(){  
+>Task WaitThenPrint = new Task<String>(){  
   
    final long time1 = System.currentTimeMillis();  
    public Return<String> act(){  
