@@ -6,18 +6,18 @@ A human-friendly framework for concurrent programming. Allows concurrent program
 
 **Composing tasks:**
 
->Task makeBreakfast = new BreakfastTask();  
->mainTask.addStep(new PutBreadInToaster());  
->mainTask.addStep(new StartToaster());  
->mainTask.addSteps(new GetOJ(), new CookEggs(), new CookBacon()); //These steps will run concurrently once the toast is >                                                                 //started                                                                        
->Future<Breakfast> futureBreakfast = mainTask.addStep(new AssembleBreakfast()); //Starts once the previous steps have >finished.   makeBreakfast.start();                                                        
->Breakfast b = futureBreakfast.get();    
+Task makeBreakfast = new BreakfastTask();  
+mainTask.addStep(new PutBreadInToaster());  
+mainTask.addStep(new StartToaster());  
+mainTask.addSteps(new GetOJ(), new CookEggs(), new CookBacon()); //These steps will run concurrently once the toast is >                                                                //started                                                                        
+Future<Breakfast> futureBreakfast = mainTask.addStep(new AssembleBreakfast()); //Starts once the previous steps have finished.   makeBreakfast.start();                                                        
+Breakfast b = futureBreakfast.get();    
 
 
 
 **Wait without threads:**
 
->Task WaitThenPrint = new Task<String>(){  
+Task WaitThenPrint = new Task<String>(){  
   
    final long time1 = System.currentTimeMillis();  
    public Return<String> act(){  
