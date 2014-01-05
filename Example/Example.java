@@ -119,14 +119,13 @@ public class Example {
 			results2[i] = exec.submit(new Runnable(){
 			
 				public void run(){
-					long initialTime = System.currentTimeMillis();
-					while((System.currentTimeMillis() - initialTime) < 1000){
-						Thread.currentThread().yield();
-						
-						/*if((System.currentTimeMillis() - time1) > 10000)
-							exec.shutdownNow();*/
+					try{
+						long initialTime = System.currentTimeMillis();
+						Thread.sleep(1000);
+						System.out.println("Task " + threadNum + ". Time waited: " + (System.currentTimeMillis() - time1) + " milliseconds.");
+					}catch(Exception e){
+						e.printStackTrace();
 					}
-					System.out.println("Task " + threadNum + ". Time waited: " + (System.currentTimeMillis() - time1) + " milliseconds.");
 				}
 			});
 		}
