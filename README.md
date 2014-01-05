@@ -3,9 +3,8 @@ Simple-Java-Concurrency-Framework
 
 A human-friendly framework for concurrent programming. Allows concurrent programs to be written using familiar concepts like Step and Task, instead of computer-centric terms like Thread, Fork/join, etc.
 
-Examples:
 
-Composing tasks:
+**Composing tasks:**
 
 Task makeBreakfast = new BreakfastTask();  
 mainTask.addStep(new PutBreadInToaster());  
@@ -16,7 +15,7 @@ Breakfast b = futureBreakfast.get();
 
 
 
-Wait without threads:
+**Wait without threads:**
 
 Task WaitThenPrint = new Task<String>(){  
   
