@@ -1,7 +1,9 @@
 Simple-Java-Concurrency-Framework
 =================================
 
-A human-friendly framework for concurrent programming. Allows concurrent programs to be written using familiar concepts like Step and Task, instead of computer-centric terms like Thread, Fork/join, etc.
+A human-friendly framework for concurrent programming. Allows concurrent programs to be written using familiar concepts like Step and Task, instead of computer-centric terms like Thread, Fork/join, etc.  
+
+This project is brand new, so all commments, suggestions and criticisms will be welcomed.
 
 
 **Composing tasks:**
