@@ -73,14 +73,14 @@ public class Example {
 	 */
 	public static void performanceExample(){
 		
-		Future<Long>[] results = new Future[10000];
-		long beginningTime = System.currentTimeMillis() + 1000; //(Tasks wait 1000 before starting).
+		Future<Long>[] results = new Future[50000];
+		long beginningTime = System.currentTimeMillis();
 		try{
 			/*
 			 * Submit tasks.
 			 */
 			
-			for(int i = 0; i < 10000; i++){
+			for(int i = 0; i < 50000; i++){
 				WaitThenPrint print1 = new WaitThenPrint("Task " +i + " completed" , 1000);
 				print1.start();
 				results[i] = print1.getFuture();
@@ -88,14 +88,14 @@ public class Example {
 			/*
 			 * Wait until tasks are done.
 			 */
-			for(int i = 0; i< 10000; i++){
+			for(int i = 0; i< 50000; i++){
 				Future<Long> waitingComputation = results[i];
 				//wait until done.
 					waitingComputation.get();
 			}
 			
 			long timeRequired = System.currentTimeMillis() - beginningTime;
-			System.out.println("Time required to process 10000 long-running tasks: " + timeRequired + " milliseconds.");
+			System.out.println("Time required to process 50000 long-running tasks: " + timeRequired + " milliseconds.");
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -111,10 +111,10 @@ public class Example {
 		
 		
 		final ExecutorService exec = Executors.newCachedThreadPool(); //.newFixedThreadPool(4);
-		Future[] results2 = new Future[10000];
+		Future[] results2 = new Future[50000];
 		
 		final long time1 = System.currentTimeMillis();
-		for(int i =0; i< 10000; i++){
+		for(int i =0; i< 50000; i++){
 			final int threadNum = i;
 			results2[i] = exec.submit(new Runnable(){
 			
@@ -134,13 +134,13 @@ public class Example {
 		/*
 		 * Wait until tasks are done.
 		 */
-		for(int i = 0; i< 10000; i++){
+		for(int i = 0; i< 50000; i++){
 			Future waitingComputation = results2[i];
 			//wait until done.
 				waitingComputation.get();
 		}
 		
-		System.out.println("Time required to process 10000 tasks using an ExecutorService: " + (System.currentTimeMillis() - time1));
+		System.out.println("Time required to process 50000 tasks using an ExecutorService: " + (System.currentTimeMillis() - time1));
 		
 		}catch(Exception e){
 			e.printStackTrace();
