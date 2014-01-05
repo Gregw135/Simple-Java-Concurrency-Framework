@@ -20,34 +20,34 @@ Wait without threads:
 
 Task WaitThenPrint = new Task<String>(){  
   
-  final long time1 = System.currentTimeMillis();  
-  public Return<String> act(){  
-    if((System.currentTimeMillis() - time1) < 1000){  
-      //Task is placed at the end of a task queue, and will be called again later.  
-      //The thread is released to work on something else.  
-      return new Return<String>(Status.RetryLater);  
-    }else{  
-      System.out.println("The brown fox jumped over the lazy dog.");  
-      return new Return<String>("Some return value");  
-    }  
-  }  
+   final long time1 = System.currentTimeMillis();  
+   public Return<String> act(){  
+     if((System.currentTimeMillis() - time1) < 1000){  
+       //Task is placed at the end of a task queue, and will be called again later.  
+       //The thread is released to work on something else.  
+       return new Return<String>(Status.RetryLater);  
+     }else{  
+       System.out.println("The brown fox jumped over the lazy dog.");  
+       return new Return<String>("Some return value");  
+      }  
+   }  
 };  
 
 
-Every step returns a Future class that allows its progress to be monitored:
+Every step returns a Future class that allows its progress to be monitored:  
 
-FutureResult<InputType,ResultType> f = someTask.getFuture();
+FutureResult<InputType,ResultType> f = someTask.getFuture();  
 
-FutureResult allows results and exceptions to be set directly:
-f.setResult(someResult);
-f.setException(someException);
+FutureResult allows results and exceptions to be set directly:  
+f.setResult(someResult);  
+f.setException(someException);  
 
 Completion events can be registered:
-f.addEvent(new BeforeReturnEvent<InputType,ResultType>(){
-    public void doBeforeReturn(FutureResult<InputType,ReturnType>, V dataToReturn){
-        System.out.println("Returned: " + dataToReturn.toString());
-    }
-}
+f.addEvent(new BeforeReturnEvent<InputType,ResultType>(){  
+    public void doBeforeReturn(FutureResult<InputType,ReturnType>, V dataToReturn){  
+          System.out.println("Returned: " + dataToReturn.toString());  
+    }  
+}  
 
 
   
