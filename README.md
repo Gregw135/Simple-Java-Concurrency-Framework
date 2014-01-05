@@ -34,6 +34,21 @@ Task WaitThenPrint = new Task<String>(){
 };  
 
 
+Every step returns a Future class that allows its progress to be monitored:
+
+FutureResult<InputType,ResultType> f = someTask.getFuture();
+
+FutureResult allows results and exceptions to be set directly:
+f.setResult(someResult);
+f.setException(someException);
+
+Completion events can be registered:
+f.addEvent(new BeforeReturnEvent<InputType,ResultType>(){
+    public void doBeforeReturn(FutureResult<InputType,ReturnType>, V dataToReturn){
+        System.out.println("Returned: " + dataToReturn.toString());
+    }
+}
+
 
   
 See Example.java for a more thorough demonstration of the framework.  
